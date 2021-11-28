@@ -18,7 +18,7 @@ jobs:
             build_type: "Release",
             cc: "gcc",
             cxx: "g++",
-            generators: "Ninja"
+            generators: "Unix Makefile"
           }
     steps:
       - uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
 
       - name: Package
         shell: bash
-        run: ninja build/package
+        run: make -C build package
 
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
@@ -73,5 +73,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build/github-build-test-0.1.1.gz
-          asset_name: azblogfilter.linux-amd64.tar.gz
+          asset_name: github-build-test-0.1.1.gz
           asset_content_type: application/gzip
