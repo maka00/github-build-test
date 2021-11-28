@@ -18,7 +18,7 @@ jobs:
             build_type: "Release",
             cc: "gcc",
             cxx: "g++",
-            generators: "Unix Makefile"
+            generators: "Unix Makefiles"
           }
     steps:
       - uses: actions/checkout@v2
