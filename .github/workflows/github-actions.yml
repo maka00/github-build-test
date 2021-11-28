@@ -15,7 +15,7 @@ jobs:
           - {
             name: "Ubuntu Latest GCC (C++17)",
             os: ubuntu-latest,
-            build_type: "Debug",
+            build_type: "Release",
             cc: "gcc",
             cxx: "g++",
             generators: "Ninja"
@@ -61,3 +61,17 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build build --config ${{ matrix.config.build_type }}
+
+      - name: Package
+        shell: bash
+        run: ninja build/package
+
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/github-build-test-0.1.1.gz
+          asset_name: azblogfilter.linux-amd64.tar.gz
+          asset_content_type: application/gzip

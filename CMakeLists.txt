@@ -10,6 +10,8 @@ set(CONAN_SYSTEM_INCLUDES ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TASKS)
 # conan setup is done
+set(CPACK_GENERATOR "TGZ")
+include(CPack)
 
 if (CMAKE_COMPILER_IS_GNUCC)
     add_compile_options(-Wall -Wextra -pedantic)
