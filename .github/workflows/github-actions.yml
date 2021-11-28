@@ -72,4 +72,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           name: github-build-test-0.1.1.gz
-          path: ./build/github-build-test-0.1.1.gz
+          path: build/*.gz
