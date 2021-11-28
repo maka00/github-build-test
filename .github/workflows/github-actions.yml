@@ -41,6 +41,7 @@ jobs:
           echo $PATH
           sudo ln -s ~/.local/bin/conan /usr/local/bin/conan
           conan --version
+          conan profile update settings.compiler.libcxx=libstdc++11 default
           ls
 
       - name: Configure C++17
@@ -50,6 +51,7 @@ jobs:
           mkdir build
           cd build
           conan install ..
+          ls build
           cmake \
             -S .. \
             -B build \
