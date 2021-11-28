@@ -50,11 +50,10 @@ jobs:
         if: contains(matrix.config.name, 'C++17')
         run: |
           mkdir build
-          cd build
-          conan install ..
+          conan install .
           ls build
           cmake \
-            -S .. \
+            -S . \
             -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
             -G "${{ matrix.config.generators }}"
