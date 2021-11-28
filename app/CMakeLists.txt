@@ -6,7 +6,6 @@ set(SOURCES main.cpp)
 
 find_package(Threads)
 find_package(PkgConfig REQUIRED)
-find_package(Boost COMPONENTS filesystem iostreams system program_options timer REQUIRED)
 enable_testing()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -25,7 +24,6 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}
 
         PRIVATE
-        ${BOOST_INCLUDE_DIRS}
         ${CMAKE_CURRENT_BINARY_DIR}
 
         )
@@ -39,9 +37,6 @@ target_link_libraries(${PROJECT_NAME}
         PUBLIC
         ${CONAN_LIBS}
         Threads::Threads
-        Boost::program_options
-        Boost::filesystem
-        Boost::timer
         )
 target_compile_features(${PROJECT_NAME}
         PUBLIC
