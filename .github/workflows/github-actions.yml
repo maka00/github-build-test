@@ -50,7 +50,7 @@ jobs:
         if: contains(matrix.config.name, 'C++17')
         run: |
           mkdir build
-          conan install .
+          conan install -if build .
           ls build
           cmake \
             -S . \
