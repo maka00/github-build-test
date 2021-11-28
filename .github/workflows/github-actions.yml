@@ -41,6 +41,7 @@ jobs:
           echo $PATH
           sudo ln -s ~/.local/bin/conan /usr/local/bin/conan
           conan --version
+          conan profile new default --detect
           conan profile update settings.compiler.libcxx=libstdc++11 default
           ls
 
